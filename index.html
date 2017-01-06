@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Week1Ex5</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <style type="text/css">
+      body {
+        background: #D9D9D9;
+      }
+
+      ul li {
+      	padding: 10px; 
+      	font-size: 14px;
+      }
+
+    </style>
+
+  </head>
+  <body>
+    <div class="container">
+	    <div class="row">
+		    <div class="col-xs-12 ">
+		        <h1>Week1ex5 - bootcamp eduweb</h1>
+
+		        	<button type="button" id="button" class="btn btn-primary">Załaduj dane JSON</button>
+
+		        	<div id="output">
+
+		        			<ul>
+		        				
+		        			</ul>
+
+
+		        	</div>
+		        
+		    </div>
+	    </div>
+    </div>
+
+
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+
+    <script type="text/javascript">
+   
+   (function() {
+
+    var button = $("#button");
+
+		$("button").on("click",function(){
+		      $.ajax({
+		        url: "https://jsonplaceholder.typicode.com/users",
+		        method: "GET",
+
+		     }).done(function( data ) {
+		        for(var i = 0; i<data.length; i++)
+		      {
+		        $("#output ul").append("<li><b>Name:</b> "+data[i].name+" <b>Username:</b> "+data[i].username+" <b>Email:</b> "+data[i].email+" <b>Phone:</b> "+data[i].phone+"</li>");
+		      }
+
+		      });
+		      
+		    });
+
+
+
+})();
+
+
+
+    </script>
+  </body>
+</html>
